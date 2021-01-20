@@ -104,7 +104,6 @@ function GenQRcode(text: string): HTMLImageElement {
             break
         }
     }
-    console.log(text, tp)
     let html = create_qrcode(text, tp, "L", "Byte", "UTF-8")
     let div = document.createElement("div")
     div.innerHTML = html

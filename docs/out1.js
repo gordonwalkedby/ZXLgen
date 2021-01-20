@@ -107,7 +107,6 @@ function GenQRcode(text) {
             break;
         }
     }
-    console.log(text, tp);
     var html = create_qrcode(text, tp, "L", "Byte", "UTF-8");
     var div = document.createElement("div");
     div.innerHTML = html;
@@ -277,6 +276,7 @@ function GenDiv(v) {
                 ss = ss.substring(0, 6) + "...";
             }
             h += s + "<span class='weibo_url_icon'></span><span class='weibo_url'>为什么" + HTMLEncodeText(ss) + "</span>";
+            break;
         case "update":
             h = "【<span class='weibo_url'>#微信" + GetRandomItem(["将更新", "即将推出"]) + "：";
             h += t1;
@@ -342,10 +342,8 @@ function BuildFinalImage(v) {
                 if (d2 == null) {
                     throw "canvas 2d context is null!";
                 }
-                console.log("load out!!!");
                 yy += 243;
                 d2.drawImage(qrs, 435, yy, 208, 208);
-                console.log(yy);
                 outimage.src = cv.toDataURL();
                 notice.style.display = "none";
                 history.pushState("", "", url);
