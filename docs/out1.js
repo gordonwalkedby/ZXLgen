@@ -143,7 +143,16 @@ var currentType = "";
     var vv = qus["vv"];
     if (vv != null) {
         var obj = JSON.parse(vv);
-        ChangeType(obj.type);
+        for (var i = 0; i < list.length; i++) {
+            var inputs = list.item(i);
+            if (inputs == null) {
+                throw "有一个 selecttype input 是null";
+            }
+            if (inputs.value == obj.type) {
+                inputs.checked = true;
+                ChangeType(obj.type);
+            }
+        }
         var e = GetElementById("t1");
         e.value = obj.t1;
         e = GetElementById("t2");

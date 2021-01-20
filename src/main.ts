@@ -28,8 +28,17 @@ let currentType: string = "";
     })
     let vv = qus["vv"]
     if (vv != null) {
-        let obj = JSON.parse(vv) as InputValues
-        ChangeType(obj.type)
+        let obj = JSON.parse(vv) as InputValues   
+        for (let i = 0; i < list.length; i++) {
+            let inputs = list.item(i)
+            if (inputs == null) {
+                throw "有一个 selecttype input 是null"
+            }
+            if (inputs.value == obj.type) {
+                inputs.checked = true
+                ChangeType(obj.type)
+            }
+        }
         let e = GetElementById("t1") as HTMLTextAreaElement
         e.value = obj.t1
         e = GetElementById("t2") as HTMLTextAreaElement
