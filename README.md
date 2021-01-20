@@ -8,7 +8,9 @@
 请不要起诉我，我是个抑郁症患者，常年想自杀。    
 
 # 打开链接，即可开始：
-https://gordonwalkedby.github.io/ZXLgen/    
+国内：  https://walkedby.gitee.io/zxlgen/  
+
+国外：  https://gordonwalkedby.github.io/ZXLgen/    
 
 # 例子：   
 ![](https://raw.githubusercontent.com/gordonwalkedby/ZXLgen/master/example.jpg)
