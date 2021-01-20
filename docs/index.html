@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张小龙生成器</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <style>
+        #box {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #output {
+            width: 97%;
+        }
+
+        .tarea {
+            width: 97%;
+            height: 60px;
+            resize: none;
+        }
+
+        #out {
+            width: 100%;
+        }
+
+        #textrender {
+            width: 1080px;
+            font-size: 44px;
+            background-color: white;
+            color: black;
+        }
+
+        .weibo_url {
+            color: rgb(88, 176, 234);
+        }
+
+        .weibo_url_icon {
+            background-image: url("./weibo_url_icon.png");
+            width: 44px;
+            height: 44px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="editor">
+            <h1>张小龙生成器</h1>
+            类型：<br>
+            <div id="selecttype">
+                <input type="radio" name="stype" value="strong" />他说（声称，强调）<br>
+                <input type="radio" name="stype" value="since" />他说（因为所以）<br>
+                <input type="radio" name="stype" value="update" />微信即将更新（推出）<br>
+            </div>
+            <p id="text1"></p>
+            <textarea class="tarea" id="t1" placeholder="请输入" maxlength=200></textarea>
+            <p id="text2"></p>
+            <textarea class="tarea" id="t2" placeholder="请输入" maxlength=200></textarea>
+            <br>
+            <button id="genbutton">点我生成</button>
+            <br> <br> <br> <br> <br> <br> <br>
+        </div>
+        <div id="out">
+
+        </div>
+        <div id="textrender">
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="./out1.js"></script>
+</body>
+
+</html>
