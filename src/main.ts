@@ -203,6 +203,7 @@ imgBottom.src = "./base_bottom.jpg"
 
 //输出到最终图片，这包括了GenDiv
 function BuildFinalImage(v: InputValues) {
+    let share_notice = GetElementById("share_notice")
     let outimage = GetElementById("outimage") as HTMLImageElement
     outimage.src = ""
     let notice = GetElementById("notice")
@@ -240,6 +241,7 @@ function BuildFinalImage(v: InputValues) {
                 outimage.src = cv.toDataURL()
                 notice.style.display = "none"
                 history.pushState("", "", url)
+                share_notice.style.display = "block"
             }
         }
     })
