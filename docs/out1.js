@@ -58,10 +58,6 @@ function ReplcaeCRLF(s) {
 // 初始化
 var editor = GetElementById("editor");
 var qus = getQueryValues();
-var hideEditor = qus["editor"] == "0";
-if (hideEditor) {
-    editor.style.display = "none";
-}
 var currentType = "";
 (function () {
     var selecttypeDiv = GetElementById("selecttype");
@@ -143,12 +139,9 @@ function GetInputValues() {
     return vv;
 }
 // 生成分享链接
-function GenURL(v, hideEditor) {
+function GenURL(v) {
     var head = location.protocol + "//" + location.host + location.pathname;
     var query = "?";
-    if (hideEditor) {
-        query += "editor=0&";
-    }
     query += "vv=" + JSON.stringify(v);
     return head + query;
 }
@@ -157,21 +150,28 @@ function GenDiv(v) {
     var d = new Date();
     d.setDate(d.getDate() + Math.random() * 365 + 19);
     var time = (d.getMonth() + 1).toFixed() + "月" + d.getDate().toFixed() + "日";
-    var h = "【<span class='weibo_url'>#张小龙声称：";
-    h += HTMLEncodeText(v.t1);
-    h += "</span>】";
-    h += time;
-    h += "，在" + GetRandomItem(["微信工作季度总结会议", "微信之夜", "腾讯开发者大会", "腾讯顶层产品会议", "开放互联网交流论坛"]);
-    h += "上，张小龙称当初绝对没想到微信现在会是这样。目前每天有10.9亿人打开微信，有7.8亿人进入朋友圈。张小龙称自己觉得特别一点要强调一下，那就是";
-    h += HTMLEncodeText(v.t1);
-    h += "。" + HTMLEncodeText(v.t2) + "。";
-    h += "<br>为什么是这样的呢？张小龙谈起了微信诞生的故事，原因出人意料地简单，”因为我不用QQ，希望有一个适合自己的通讯工具来用，于是就开始了微信的第一版。”如果要用两个词形容微信，张小龙认为，一个是连接，一个是简单。";
-    h += "<br>“这样的话，我和团队，才会为我们的工作而感到骄傲，并且觉得有意义”，张小龙说道。<span class='weibo_url_icon'></span><span class='weibo_url'>张小龙声称：";
-    var ss = v.t1;
-    if (ss.length > 5) {
-        ss = ss.substring(0, 5) + "...";
+    var h = "";
+    switch (v.type) {
+        case "strong":
+            h = "【<span class='weibo_url'>#张小龙声称：";
+            h += HTMLEncodeText(v.t1);
+            h += "</span>】";
+            h += time;
+            h += "，在" + GetRandomItem(["微信工作季度总结会议", "微信之夜", "腾讯开发者大会", "腾讯顶层产品会议", "开放互联网交流论坛"]);
+            h += "上，张小龙称当初绝对没想到微信现在会是这样。目前每天有10.9亿人打开微信，有7.8亿人进入朋友圈。张小龙称自己觉得特别一点要强调一下，那就是";
+            h += HTMLEncodeText(v.t1);
+            h += "。" + HTMLEncodeText(v.t2) + "。";
+            h += "<br>为什么是这样的呢？张小龙谈起了微信诞生的故事，原因出人意料地简单，”因为我不用QQ，希望有一个适合自己的通讯工具来用，于是就开始了微信的第一版。”如果要用两个词形容微信，张小龙认为，一个是连接，一个是简单。";
+            h += "<br>“这样的话，我和团队，才会为我们的工作而感到骄傲，并且觉得有意义”，张小龙说道。<span class='weibo_url_icon'></span><span class='weibo_url'>微信张小龙声称：";
+            var ss = v.t1;
+            if (ss.length > 5) {
+                ss = ss.substring(0, 5) + "...";
+            }
+            h += HTMLEncodeText(ss) + "</span>";
+            break;
+        default:
+            break;
     }
-    h += HTMLEncodeText(ss) + "</span>";
     var render = GetElementById("textrender");
     render.innerHTML = h;
 }

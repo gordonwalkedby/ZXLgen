@@ -4,10 +4,6 @@
 // 初始化
 let editor = GetElementById("editor") as HTMLDivElement
 let qus = getQueryValues()
-let hideEditor = qus["editor"] == "0"
-if (hideEditor) {
-    editor.style.display = "none"
-}
 let currentType: string = "";
 (function () {
     let selecttypeDiv = GetElementById("selecttype") as HTMLDivElement
@@ -92,12 +88,9 @@ function GetInputValues(): InputValues {
 }
 
 // 生成分享链接
-function GenURL(v: InputValues, hideEditor: boolean): string {
+function GenURL(v: InputValues): string {
     let head: string = location.protocol + "//" + location.host + location.pathname
     let query: string = "?"
-    if (hideEditor) {
-        query += "editor=0&"
-    }
     query += "vv=" + JSON.stringify(v)
     return head + query
 }
